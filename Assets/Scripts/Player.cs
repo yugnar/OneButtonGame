@@ -29,6 +29,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space) && !gameActive)
+        {
+            gameActive = true;
+            shipRenderer.enabled = true;
+        }
         if (gameActive)
         {
             rb.gravityScale = 1f;

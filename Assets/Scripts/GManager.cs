@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class GManager : MonoBehaviour
 {
-    public Text endgameText; //WATCH AVENGERS ENDGAME ON 26/4/2019!!!! :)
+    public Text endgameText;
     public Text hpText;
     private bool gameoverTextStatus;
+    private bool gameActive;
 
     public static GManager instance = null;
     // Start is called before the first frame update
@@ -22,12 +23,17 @@ public class GManager : MonoBehaviour
             Destroy(gameObject); //So only one Game Manager can exist at a time.
         }
         gameoverTextStatus = false;
+        gameActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space) && !gameActive)
+        {
+            gameActive = true;
+            hpText.gameObject.SetActive(true);
+        }
     }
 
     public void protocolEndgame()
